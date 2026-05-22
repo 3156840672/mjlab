@@ -244,6 +244,15 @@ def dog1_rough_env_cfg(
         params={"sensor_name": trunk_ground_cfg.name},
     )
 
+    # 移除地形扫描传感器，因为真实机器人没有
+    remove_sensors = {"terrain_scan"}
+    cfg.scene.sensors = tuple(
+        s for s in (cfg.scene.sensors or ()) if s.name not in remove_sensors
+    )
+    del cfg.observations["actor"].terms["height_scan"]
+    del cfg.observations["critic"].terms["height_scan"]
+    cfg.rewards["upright"].params.pop("terrain_sensor_names", None)
+
     # 终止条件
     cfg.terminations.pop("fell_over", None)
     cfg.terminations["illegal_contact"] = TerminationTermCfg(
@@ -300,8 +309,8 @@ def dog1_flat_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
     cfg.scene.sensors = tuple(
         s for s in (cfg.scene.sensors or ()) if s.name not in remove_sensors
     )
-    del cfg.observations["actor"].terms["height_scan"]
-    del cfg.observations["critic"].terms["height_scan"]
+    cfg.observations["actor"].terms.pop("height_scan", None)
+    cfg.observations["critic"].terms.pop("height_scan", None)
     cfg.rewards["upright"].params.pop("terrain_sensor_names", None)
 
     # 注意：奖励名称已改为 trunk_collision

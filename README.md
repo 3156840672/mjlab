@@ -15,3 +15,12 @@ uv run play Mjlab-Velocity-Rough-Dog1   --checkpoint-file logs/rsl_rl/dog1_veloc
 uv run play Mjlab-Velocity-Rough-Dog1   --checkpoint-file logs/rsl_rl/dog1_velocity/2026-05-06_13-21-47/model_7500.pt
 ```
 
+继续训练   
+```bash
+uv run train Mjlab-Velocity-Flat-Dog1 \
+    --agent.resume True \
+    --agent.load_run 2026-05-08_12-30-11 \
+    --agent.load_checkpoint model_2100.pt
+    ```
+
+

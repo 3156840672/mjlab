@@ -41,5 +41,5 @@ def dog1_ppo_runner_cfg() -> RslRlOnPolicyRunnerCfg:
         experiment_name="dog1_velocity",   # 改成你的机器人名
         save_interval=50,
         num_steps_per_env=24,
-        max_iterations=10_000,
+        max_iterations=10000,
     )

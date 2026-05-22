@@ -161,7 +161,7 @@ for a in DOG1_ARTICULATION.actuators:
   for n in names:
     DOG1_ACTION_SCALE[n] = 0.25 * e / s
 
-
+  
 if __name__ == "__main__":
   import mujoco.viewer as viewer
 

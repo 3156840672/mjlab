@@ -19,6 +19,7 @@ uv run play Mjlab-Velocity-Rough-Dog1   --checkpoint-file logs/rsl_rl/dog1_veloc
 ```bash
 uv run train Mjlab-Velocity-Flat-Dog1 \
     --agent.resume True \
+    --env.scene.num-envs 512
     --agent.load_run 2026-05-08_12-30-11 \
     --agent.load_checkpoint model_2100.pt
     ```
